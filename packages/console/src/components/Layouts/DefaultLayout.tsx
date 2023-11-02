@@ -1,5 +1,8 @@
-import { ReactElement, ReactNode, useState } from 'react'
+import { ReactElement, ReactNode } from 'react'
 
+import { useRecoilValue } from 'recoil'
+
+import { LoadingState } from '~/atoms/states'
 import { BaseHead } from '~/components/Base/BaseHead'
 import { FlexBox } from '~/components/Base/FlexBox'
 import { LoadingOverlay } from '~/components/Base/Loading'
@@ -10,12 +13,11 @@ type Props = {
 
 export const DefaultLayout = ({ children }: Props): ReactElement => {
   // recoilなどに移してローディングをグローバルで管理する
-  const [loading] = useState<boolean>(false)
+  const loading = useRecoilValue(LoadingState)
 
   return (
     <>
       <BaseHead />
-
       <FlexBox
         style={{
           position: 'relative'
