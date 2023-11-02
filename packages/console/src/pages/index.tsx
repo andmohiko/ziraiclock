@@ -1,14 +1,12 @@
 import type { NextPage } from 'next'
 
+import { EditZiraiForm } from '~/components/Base/Forms/EditZiraiForm'
 import { DefaultLayout } from '~/components/Layouts/DefaultLayout'
 
 const Home: NextPage = () => {
   return (
     <DefaultLayout>
-      <h1>テンプレート</h1>
-      <p>だんらく</p>
-      <span>すぱん</span>
-      <span>すぱーん</span>
+      <EditZiraiForm />
     </DefaultLayout>
   )
 }
