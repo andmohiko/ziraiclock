@@ -1,12 +1,17 @@
 import type { NextPage } from 'next'
 
-import { EditZiraiForm } from '~/components/Base/Forms/EditZiraiForm'
+import { FlexBox } from '~/components/Base/FlexBox'
+import { AddMultipleZiraiForm } from '~/components/Forms/AddMultipleZiraiForm'
+import { EditZiraiForm } from '~/components/Forms/EditZiraiForm'
 import { DefaultLayout } from '~/components/Layouts/DefaultLayout'
 
 const Home: NextPage = () => {
   return (
     <DefaultLayout>
-      <EditZiraiForm />
+      <FlexBox gap={120}>
+        <EditZiraiForm />
+        <AddMultipleZiraiForm />
+      </FlexBox>
     </DefaultLayout>
   )
 }

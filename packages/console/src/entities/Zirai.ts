@@ -16,3 +16,9 @@ export const EditZiraiSchema = z.object({
 })
 
 export type EditZiraiInputType = z.infer<typeof EditZiraiSchema>
+
+export const AddMultipleZiraisSchema = z.object({
+  imageUrls: z.array(z.string()).min(1).max(100)
+})
+
+export type AddMultipleZiraisInputType = z.infer<typeof AddMultipleZiraisSchema>
