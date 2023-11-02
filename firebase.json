@@ -1,0 +1,16 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "predeploy": [
+      "yarn workspace @usagi/server run lint",
+      "yarn workspace @usagi/server run pre-build"
+    ],
+    "source": "packages/server"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
