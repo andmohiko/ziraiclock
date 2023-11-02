@@ -5,8 +5,8 @@
   },
   "functions": {
     "predeploy": [
-      "yarn workspace @usagi/server run lint",
-      "yarn workspace @usagi/server run pre-build"
+      "yarn workspace @ziraiclock/server run lint",
+      "yarn workspace @ziraiclock/server run pre-build"
     ],
     "source": "packages/server"
   },
