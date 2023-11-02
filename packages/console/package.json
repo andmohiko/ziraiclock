@@ -1,5 +1,5 @@
 {
-  "name": "andmohiko-next-template",
+  "name": "@ziraiclock/console",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,16 +17,6 @@
     "@types/node": "18",
     "@types/react": "18.2.31",
     "@types/react-dom": "18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
-    "eslint": "^8.52.0",
-    "eslint-config-next": "13.5.6",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.0.3",
     "sass": "^1.69.4",
     "typescript": "5.2.2"
   }

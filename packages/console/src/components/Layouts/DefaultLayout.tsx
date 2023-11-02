@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode, useState } from 'react'
 
+import { BaseHead } from '~/components/Base/BaseHead'
 import { FlexBox } from '~/components/Base/FlexBox'
 import { LoadingOverlay } from '~/components/Base/Loading'
-import { PageHead } from '~/components/Head'
 
 type Props = {
   children?: ReactNode
@@ -14,11 +14,11 @@ export const DefaultLayout = ({ children }: Props): ReactElement => {
 
   return (
     <>
-      <PageHead />
+      <BaseHead />
 
       <FlexBox
         style={{
-          position: 'relative',
+          position: 'relative'
         }}
       >
         {loading && <LoadingOverlay />}
