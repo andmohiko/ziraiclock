@@ -1,0 +1,42 @@
+Arguments: 
+  /Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/bin/node /Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/bin/yarn
+
+PATH: 
+  /Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/bin:/Users/andmohiko/.anyenv/envs/nodenv/libexec:/Users/andmohiko/.anyenv/envs/nodenv/plugins/nodenv-vars/bin:/Users/andmohiko/.anyenv/envs/nodenv/plugins/node-build/bin:/Users/andmohiko/.asdf/shims:/Users/andmohiko/.asdf/bin:/Users/andmohiko/.poetry/bin:/Users/andmohiko/.pyenv/shims:/Users/andmohiko/.cargo/bin:/Users/andmohiko:/Users/andmohiko/.local/bin:/Users/andmohiko/Library/Preferences/pypoetry/venv/bin/poetry:/Users/andmohiko/dotfiles/bin:/Users/andmohiko/.pyenv/bin:“/opt/homebrew/bin:/Users/andmohiko/.anyenv/envs/pyenv/shims:/Users/andmohiko/.anyenv/envs/pyenv/bin:/Users/andmohiko/.anyenv/envs/nodenv/shims:/Users/andmohiko/.anyenv/envs/nodenv/bin:/Users/andmohiko/platform-tools:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/andmohiko/.rye/shims:/Users/andmohiko/Library/pnpm:/Users/andmohiko/.poetry/bin:/Users/andmohiko/.pyenv/shims:/Users/andmohiko/.cargo/bin:/Users/andmohiko:/Users/andmohiko/.local/bin:/Users/andmohiko/Library/Preferences/pypoetry/venv/bin/poetry:/Users/andmohiko/dotfiles/bin:/Users/andmohiko/.pyenv/bin:“/opt/homebrew/bin:/Users/andmohiko/.anyenv/envs/pyenv/shims:/Users/andmohiko/.anyenv/envs/pyenv/bin:/Users/andmohiko/.anyenv/envs/nodenv/shims:/Users/andmohiko/.anyenv/envs/nodenv/bin:/Users/andmohiko/platform-tools:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/andmohiko/.cargo/bin”:/Users/andmohiko/.fzf/bin”
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.17.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/andmohiko/Development/ziraiclock/package.json: Unexpected token } in JSON at position 157
+      at JSON.parse (<anonymous>)
+      at /Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/andmohiko/.anyenv/envs/nodenv/versions/18.17.1/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "ziraiclock",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "workspaces": {
+      "packages": [
+        "packages/*"
+      ]
+    },
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
