@@ -1,2 +1,2 @@
 // batches
-exports.dailySelectZirai = require('./batches/dailySelectZirai')
+exports.selectZiraiBatch = require('./batches/selectZiraiBatch')

@@ -1,1 +1,1 @@
-export const dailyBatchSchedule = '0 0 * * *'
+export const batchSchedule = '0 */3 * * *'

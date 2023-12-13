@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions'
 
-import { dailyBatchSchedule } from '~/constants'
+import { batchSchedule } from '~/constants'
 import {
   fetchAllZiraisOperation,
   updateZiraiOperation
@@ -11,8 +11,8 @@ import { shuffleArray } from '~/utils/shuffle'
 /**
  * 期限切れのチケットコードを無効にする
  */
-const dailySelectZirai = functions.pubsub
-  .schedule(dailyBatchSchedule)
+const selectZiraiBatch = functions.pubsub
+  .schedule(batchSchedule)
   .timeZone('Asia/Tokyo')
   .onRun(async () => {
     try {
@@ -28,4 +28,4 @@ const dailySelectZirai = functions.pubsub
     }
   })
 
-export default dailySelectZirai
+export default selectZiraiBatch
