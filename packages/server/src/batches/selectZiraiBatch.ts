@@ -1,6 +1,8 @@
+import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
 
 import { batchSchedule } from '~/constants'
+import { createUsedHistoryOperation } from '~/infrastructures/UsedHistoryOperations'
 import {
   fetchAllZiraisOperation,
   updateZiraiOperation
@@ -19,9 +21,15 @@ const selectZiraiBatch = functions.pubsub
       const zirais = await fetchAllZiraisOperation()
       const shuffledZirais = shuffleArray(zirais)
       const now = new Date()
-      updateZiraiOperation(shuffledZirais[0].ziraiId, {
+
+      const ziraiId = shuffledZirais[0].ziraiId
+      await updateZiraiOperation(ziraiId, {
         updatedAt: serverTimestamp,
-        useAt: now
+        useAt: now,
+        usedCount: admin.firestore.FieldValue.increment(1)
+      })
+      await createUsedHistoryOperation(ziraiId, {
+        createdAt: serverTimestamp
       })
     } catch (e) {
       console.error(e)
