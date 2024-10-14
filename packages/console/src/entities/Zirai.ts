@@ -11,7 +11,7 @@ export type Zirai = {
 }
 
 export const EditZiraiSchema = z.object({
-  imageUrls: z.array(z.string()).min(1).max(1),
+  imageUrl: z.string().min(1),
   twitterId: z.string().optional()
 })
 

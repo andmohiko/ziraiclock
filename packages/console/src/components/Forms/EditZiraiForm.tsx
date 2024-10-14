@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil'
 import { LoadingState } from '~/atoms/states'
 import { FlexBox } from '~/components/Base/FlexBox'
 import { FileInput } from '~/components/Inputs/FileInput'
+import { FileInputWithCropper } from '~/components/Inputs/FileInputWithCropper'
 import {
   EditZiraiInputType,
   EditZiraiSchema,
@@ -28,7 +29,7 @@ export const EditZiraiForm = (): React.ReactNode => {
     resolver: zodResolver(EditZiraiSchema),
     mode: 'all',
     defaultValues: {
-      imageUrls: [],
+      imageUrl: '',
       twitterId: undefined
     }
   })
@@ -38,7 +39,7 @@ export const EditZiraiForm = (): React.ReactNode => {
       setLoading(true)
       await addDoc(collection(db, ziraisCollection), {
         createdAt: serverTimestamp,
-        imageUrl: data.imageUrls[0],
+        imageUrl: data.imageUrl,
         twitterId: data.twitterId !== '' ? data.twitterId : null,
         updatedAt: serverTimestamp,
         useAt: null
@@ -62,16 +63,15 @@ export const EditZiraiForm = (): React.ReactNode => {
         <Title order={2}>地雷女子の追加</Title>
         <FlexBox gap={32}>
           <Controller
-            name="imageUrls"
+            name="imageUrl"
             control={control}
             render={({ field }) => (
-              <FileInput
+              <FileInputWithCropper
                 label="地雷女子画像"
-                defaultValue={field.value}
-                setFiles={field.onChange}
-                maxFiles={1}
+                value={field.value}
+                onChange={field.onChange}
+                error={errors.imageUrl?.message}
                 storagePath="/images/zirais"
-                error={errors.imageUrls?.message}
               />
             )}
           />
