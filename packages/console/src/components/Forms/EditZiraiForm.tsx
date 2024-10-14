@@ -6,7 +6,6 @@ import { useSetRecoilState } from 'recoil'
 
 import { LoadingState } from '~/atoms/states'
 import { FlexBox } from '~/components/Base/FlexBox'
-import { FileInput } from '~/components/Inputs/FileInput'
 import { FileInputWithCropper } from '~/components/Inputs/FileInputWithCropper'
 import {
   EditZiraiInputType,
@@ -24,6 +23,7 @@ export const EditZiraiForm = (): React.ReactNode => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors, isSubmitting, isValid }
   } = useForm<EditZiraiInputType>({
     resolver: zodResolver(EditZiraiSchema),
@@ -45,6 +45,7 @@ export const EditZiraiForm = (): React.ReactNode => {
         useAt: null
       })
       showSuccessToast('地雷女子を保存しました')
+      reset()
     } catch (e) {
       showErrorToast('地雷女子の保存に失敗しました', errorMessage(e))
     } finally {
