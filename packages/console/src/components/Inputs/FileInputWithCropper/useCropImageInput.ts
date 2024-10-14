@@ -91,22 +91,22 @@ export const useCropImageInput = (
 
       canvas.toBlob(async (result) => {
         if (result instanceof Blob) {
+          setIsLoading(true)
           const filename = uuid()
           const remoteFileUrl = await uploadImage(
             `${storagePath}/${filename}`,
             result
           )
           setFile(remoteFileUrl)
+          setIsLoading(false)
         }
       })
     }
   }
 
   const onCrop = async () => {
-    setIsLoading(true)
     await createCroppedImageUrl()
     handlers.close()
-    setIsLoading(false)
   }
 
   useEffect(() => {

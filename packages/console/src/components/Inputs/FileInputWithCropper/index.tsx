@@ -69,9 +69,9 @@ export const FileInputWithCropper = ({
               <Dropzone.Idle>
                 <MdOutlineAddPhotoAlternate color="#777" size={50} />
               </Dropzone.Idle>
-              {isLoading && <LoadingOverlay visible />}
             </FlexBox>
             {isDisabled && <Overlay color="#fff" opacity={0.7} />}
+            {isLoading && <LoadingOverlay visible />}
           </Dropzone>
           {error && <span className={styles.error}>{error}</span>}
 
