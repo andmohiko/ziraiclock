@@ -30,17 +30,24 @@ export const EditZiraiForm = (): React.ReactNode => {
     mode: 'all',
     defaultValues: {
       imageUrl: '',
-      twitterId: undefined
+      twitterId: undefined,
+      tweetUrl: undefined
     }
   })
 
   const onSubmit: SubmitHandler<EditZiraiInputType> = async (data) => {
     try {
+      let twitterId = data.twitterId
+      if (data.tweetUrl) {
+        // get user id from tweet url
+        // sample URL: https://x.com/andmohiko/status/1501184876136972300
+        twitterId = data.tweetUrl.split('/')[3]
+      }
       setLoading(true)
       await addDoc(collection(db, ziraisCollection), {
         createdAt: serverTimestamp,
         imageUrl: data.imageUrl,
-        twitterId: data.twitterId !== '' ? data.twitterId : null,
+        twitterId: twitterId ? twitterId : null,
         updatedAt: serverTimestamp,
         useAt: null
       })
@@ -80,6 +87,12 @@ export const EditZiraiForm = (): React.ReactNode => {
             label="ツイッターID"
             {...register('twitterId')}
             error={errors.twitterId?.message}
+            w="100%"
+          />
+          <TextInput
+            label="ツイートURL"
+            {...register('tweetUrl')}
+            error={errors.tweetUrl?.message}
             w="100%"
           />
         </FlexBox>
