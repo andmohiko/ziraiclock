@@ -1,6 +1,7 @@
 import { RiTwitterXFill } from 'react-icons/ri'
 import { useZirai } from './hooks'
 import { Time } from './Time'
+import { NextTime } from './NextTime'
 
 export const Clock = () => {
   const [zirai, loading, error] = useZirai()
@@ -18,6 +19,7 @@ export const Clock = () => {
       }}
     >
       <Time />
+      <NextTime />
       {twitterId && (
         <a
           href={`https://twitter.com/${twitterId}`}
