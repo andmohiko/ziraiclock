@@ -4,14 +4,16 @@ export const ziraisCollection = 'zirais'
 
 export type Zirai = {
   createdAt: Date
-  imageUrl: string
+  uploadedImageUrl: string
+  inputImageUrl: string
   twitterId: string
   updatedAt: Date
   useAt: Date
 }
 
 export const EditZiraiSchema = z.object({
-  imageUrl: z.string().min(1),
+  uploadedImageUrl: z.string().optional(),
+  inputImageUrl: z.string().optional(),
   tweetUrl: z.string().optional(),
   twitterId: z.string().optional()
 })

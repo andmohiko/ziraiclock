@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil'
 import { LoadingState } from '~/atoms/states'
 import { FlexBox } from '~/components/Base/FlexBox'
 import { FileInputWithCropper } from '~/components/Inputs/FileInputWithCropper'
+import { ImageUrlInputWithCropper } from '~/components/Inputs/ImageUrlInputWithCropper'
 import {
   EditZiraiInputType,
   EditZiraiSchema,
@@ -29,7 +30,8 @@ export const EditZiraiForm = (): React.ReactNode => {
     resolver: zodResolver(EditZiraiSchema),
     mode: 'all',
     defaultValues: {
-      imageUrl: '',
+      uploadedImageUrl: undefined,
+      inputImageUrl: undefined,
       twitterId: undefined,
       tweetUrl: undefined
     }
@@ -43,10 +45,16 @@ export const EditZiraiForm = (): React.ReactNode => {
         // sample URL: https://x.com/andmohiko/status/1501184876136972300
         twitterId = data.tweetUrl.split('/')[3]
       }
+      if (!data.uploadedImageUrl && !data.inputImageUrl) {
+        showErrorToast('画像をアップロードしてください')
+        return
+      }
       setLoading(true)
       await addDoc(collection(db, ziraisCollection), {
         createdAt: serverTimestamp,
-        imageUrl: data.imageUrl,
+        imageUrl: data.uploadedImageUrl
+          ? data.uploadedImageUrl
+          : data.inputImageUrl,
         twitterId: twitterId ? twitterId : null,
         updatedAt: serverTimestamp,
         useAt: null
@@ -71,14 +79,27 @@ export const EditZiraiForm = (): React.ReactNode => {
         <Title order={2}>地雷女子の追加</Title>
         <FlexBox gap={32}>
           <Controller
-            name="imageUrl"
+            name="inputImageUrl"
+            control={control}
+            render={({ field }) => (
+              <ImageUrlInputWithCropper
+                label="地雷女子画像"
+                value={field.value}
+                onChange={field.onChange}
+                error={errors.inputImageUrl?.message}
+                storagePath="/images/zirais"
+              />
+            )}
+          />
+          <Controller
+            name="uploadedImageUrl"
             control={control}
             render={({ field }) => (
               <FileInputWithCropper
                 label="地雷女子画像"
                 value={field.value}
                 onChange={field.onChange}
-                error={errors.imageUrl?.message}
+                error={errors.uploadedImageUrl?.message}
                 storagePath="/images/zirais"
               />
             )}
