@@ -23,12 +23,14 @@ service cloud.firestore {
     }
 
     function isValidZiraiSchema(requestData) {
-      return requestData.size() == 5
+      return requestData.size() == 7
               && 'createdAt' in requestData && requestData.createdAt is timestamp
               && 'imageUrl' in requestData && requestData.imageUrl is string
+              && 'publishStatus' in requestData && requestData.publishStatus is string
               && 'twitterId' in requestData
               && 'updatedAt' in requestData && requestData.updatedAt is timestamp
-              && 'useAt' in requestData;
+              && 'useAt' in requestData
+              && 'usedCount' in requestData && requestData.usedCount is number;
     }
 
     match /zirais/{ziraiId} {

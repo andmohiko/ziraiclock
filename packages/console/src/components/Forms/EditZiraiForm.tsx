@@ -55,9 +55,11 @@ export const EditZiraiForm = (): React.ReactNode => {
         imageUrl: data.uploadedImageUrl
           ? data.uploadedImageUrl
           : data.inputImageUrl,
+        publishStatus: 'draft',
         twitterId: twitterId ? twitterId : null,
         updatedAt: serverTimestamp,
-        useAt: null
+        useAt: null,
+        usedCount: 0
       })
       showSuccessToast('地雷女子を保存しました')
       reset()
