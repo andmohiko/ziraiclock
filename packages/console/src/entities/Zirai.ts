@@ -2,13 +2,16 @@ import { z } from 'zod'
 
 export const ziraisCollection = 'zirais'
 
+export type PublishStatus = 'draft' | 'published' | 'unauthorized' | 'withdrawn'
+
 export type Zirai = {
   createdAt: Date
-  uploadedImageUrl: string
-  inputImageUrl: string
+  imageUrl: string
+  publishStatus: PublishStatus
   twitterId: string
   updatedAt: Date
   useAt: Date
+  usedCount: number
 }
 
 export const EditZiraiSchema = z.object({
