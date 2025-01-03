@@ -11,7 +11,7 @@ import { serverTimestamp } from '~/libs/firebase'
 import { shuffleArray } from '~/utils/shuffle'
 
 /**
- * 期限切れのチケットコードを無効にする
+ * 地雷女子を定期的に変更する
  */
 const selectZiraiBatch = functions.pubsub
   .schedule(batchSchedule)
