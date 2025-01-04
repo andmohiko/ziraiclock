@@ -58,14 +58,9 @@ export type UpdatePublicZiraiDto = {
   usedCount: FieldValue
 }
 
-export const publicStatuses = [
-  'published',
-  'unauthorized'
-] as const satisfies PublishStatus[]
-export const privateStatuses = [
-  'draft',
-  'withdrawn'
-] as const satisfies PublishStatus[]
+export const publicStatuses = ['published', 'unauthorized']
+
+export const privateStatuses = ['draft', 'withdrawn']
 
 export const isPublic = (status: PublishStatus): boolean => {
   return status === 'published' || status === 'unauthorized'

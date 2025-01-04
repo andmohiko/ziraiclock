@@ -26,7 +26,7 @@ module.exports = {
       version: 'detect'
     }
   },
-  plugins: ['@typescript-eslint', 'react', 'nuxt', 'import'],
+  plugins: ['@typescript-eslint', 'react', 'import'],
   rules: {
     '@typescript-eslint/ban-types': [
       'error',

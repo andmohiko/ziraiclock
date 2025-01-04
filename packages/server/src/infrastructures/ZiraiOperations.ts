@@ -9,6 +9,16 @@ import { convertDate } from '~/utils/date'
 
 const dateColumns = ['createdAt', 'updatedAt', 'useAt']
 
+export const convertZiraiFromSnap = (
+  docId: string,
+  doc: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+): Zirai => {
+  return {
+    ziraiId: docId,
+    ...convertDate(doc.data(), dateColumns)
+  } as Zirai
+}
+
 export const fetchAllZiraisOperation = async (): Promise<Array<Zirai>> => {
   const snapshot = await db.collection(ziraisCollection).get()
   return snapshot.docs.map((doc) => {
