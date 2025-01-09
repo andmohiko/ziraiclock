@@ -1,9 +1,9 @@
-import '../global.css';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { proxyStore } from '../app/proxyStore';
-import NewTab from './NewTab';
+import '../global.css'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { proxyStore } from '../app/proxyStore'
+import NewTab from './NewTab'
 
 proxyStore.ready().then(() => {
   createRoot(document.getElementById('root') as HTMLElement).render(
@@ -11,6 +11,6 @@ proxyStore.ready().then(() => {
       <Provider store={proxyStore}>
         <NewTab />
       </Provider>
-    </React.StrictMode>,
-  );
-});
+    </React.StrictMode>
+  )
+})
