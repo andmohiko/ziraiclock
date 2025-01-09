@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Zirai } from '../../entities/Zirai'
-import { fetchZirai } from '../../infrastructure/ZiraiOperations'
+import {
+  fetchPublicZirai,
+  fetchZirai
+} from '../../infrastructure/ZiraiOperations'
 import { errorMessage } from '../../../utils/errorMessage'
 
 export const useZirai = (): [
@@ -10,7 +13,7 @@ export const useZirai = (): [
 ] => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | undefined>(undefined)
-  const [zirai, setZira] = useState<Zirai | undefined>(undefined)
+  const [zirai, setZirai] = useState<Zirai | undefined>(undefined)
 
   useEffect(() => {
     const func = async () => {
@@ -22,7 +25,39 @@ export const useZirai = (): [
         console.log('fetching zirai')
         setLoading(true)
         const data = await fetchZirai()
-        setZira(data)
+        setZirai(data)
+      } catch (e) {
+        setError(errorMessage)
+      } finally {
+        setLoading(false)
+      }
+    }
+    func()
+  }, [])
+
+  return [zirai, loading, error]
+}
+
+export const usePublicZirai = (): [
+  Zirai | undefined,
+  boolean,
+  string | undefined
+] => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | undefined>(undefined)
+  const [zirai, setZirai] = useState<Zirai | undefined>(undefined)
+
+  useEffect(() => {
+    const func = async () => {
+      if (zirai) {
+        return
+      }
+
+      try {
+        console.log('fetching zirai')
+        setLoading(true)
+        const data = await fetchPublicZirai()
+        setZirai(data)
       } catch (e) {
         setError(errorMessage)
       } finally {

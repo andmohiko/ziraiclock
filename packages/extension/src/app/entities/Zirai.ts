@@ -1,4 +1,5 @@
 export const ziraisCollection = 'zirais'
+export const publicZiraisCollection = 'publicZirais'
 
 export type PublishStatus = 'draft' | 'published' | 'unauthorized' | 'withdrawn'
 

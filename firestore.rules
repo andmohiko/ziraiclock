@@ -33,6 +33,10 @@ service cloud.firestore {
               && 'usedCount' in requestData && requestData.usedCount is number;
     }
 
+    match /publicZirais/{ziraiId} {
+      allow read;
+    }
+
     match /zirais/{ziraiId} {
       allow read;
       allow create, update: if isValidZiraiSchema(requestData());

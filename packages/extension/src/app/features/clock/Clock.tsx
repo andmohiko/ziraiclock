@@ -1,10 +1,10 @@
 import { RiTwitterXFill } from 'react-icons/ri'
-import { useZirai } from './hooks'
+import { usePublicZirai } from './hooks'
 import { Time } from './Time'
 import { NextTime } from './NextTime'
 
 export const Clock = () => {
-  const [zirai, loading, error] = useZirai()
+  const [zirai, loading, error] = usePublicZirai()
 
   const twitterId = zirai?.twitterId
   const imageUrl = zirai?.imageUrl
