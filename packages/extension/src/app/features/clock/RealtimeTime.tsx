@@ -1,8 +1,13 @@
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 
-export const Time = () => {
-  const [now, setNow] = useState<Date>(new Date())
+type Props = {
+  date: Date
+  format?: string
+}
+
+export const RealtimeTime = ({ date, format = 'HH:mm:ss' }: Props) => {
+  const [now, setNow] = useState<Date>(date)
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -14,9 +19,5 @@ export const Time = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return (
-    <p className="text-[162px] text-white font-bold mb-12">
-      {dayjs(now).format('HH:mm:ss')}
-    </p>
-  )
+  return <>{dayjs(now).format(format)}</>
 }

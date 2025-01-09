@@ -1,6 +1,6 @@
 import { RiTwitterXFill } from 'react-icons/ri'
 import { usePublicZirai } from './hooks'
-import { Time } from './Time'
+import { NowTime } from './NowTime'
 import { NextTime } from './NextTime'
 
 export const Clock = () => {
@@ -18,7 +18,7 @@ export const Clock = () => {
         backgroundImage: `url(${backgroundImageUrl})`
       }}
     >
-      <Time />
+      <NowTime />
       <NextTime />
       {twitterId && (
         <a
